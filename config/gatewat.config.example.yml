@@ -1,0 +1,49 @@
+http:
+  port: 8080
+apiEndpoints:
+  customers:
+    host: customers.company.com
+  orders:
+    host: orders.company.com
+serviceEndpoints:
+  customers:
+    url: 'http://customers'
+  orders:
+    url: 'http://orders'
+policies:
+  - jwt
+  - proxy
+  - rate-limit
+pipelines:
+  customers:
+    apiEndpoints:
+      - customers
+    policies:
+      - rate-limit:
+        - action:
+            max: 1
+            windowMs: 1000
+      - jwt:
+        - action:
+            secretOrPublicKeyFile: ./key/pubKey.pem
+            checkCredentialExistence: false
+      - proxy:
+          - action:
+              serviceEndpoint: customers
+              changeOrigin: true
+  orders:
+    apiEndpoints:
+      - orders
+    policies:
+      - rate-limit:
+        - action:
+            max: 1
+            windowMs: 1000
+      - jwt:
+        - action:
+            secretOrPublicKeyFile: ./key/pubKey.pem
+            checkCredentialExistence: false
+      - proxy:
+          - action:
+              serviceEndpoint: orders
+              changeOrigin: true
