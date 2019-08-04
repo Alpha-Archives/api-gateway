@@ -6,7 +6,7 @@ admin:
 apiEndpoints:
   api:
     host: localhost
-    paths: '/ip'
+    paths: '/api/v1'
 serviceEndpoints:
   httpbin:
     url: 'https://httpbin.org'
