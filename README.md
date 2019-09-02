@@ -1,13 +1,10 @@
-<h1 align="center">Express API: 🌌wGateway Basics</h1>
-<p align="center">A simple express api getwayfor learning purposes.</p>
+## Idea API Gateway 
 
+<p>A simple express api geteway for Learning Purposes.</p>
 
-<p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"></a>
-</p>
+<a href="#"><img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"></a>
 
-
-## Quick Start
+## 🚀Quick Start
 
 ```bash
 # Install dependencies
@@ -17,9 +14,9 @@ npm install
 npm start
 ```
 
-## Author
+## 😊Author
 
-Alpha Olomi [hello@alphaolomi.com](mailto:hello@alphaolomi.com)
+**Alpha Olomi** [hello@alphaolomi.com](mailto:hello@alphaolomi.com)
 
 ## License
 MIT License
