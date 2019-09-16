@@ -1,22 +1,22 @@
-## Idea API Gateway 
+# API Gateway 
 
-<p>A simple express api geteway for Learning Purposes.</p>
-
-<a href="#"><img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"></a>
+A simple express api geteway for Learning Purposes.
 
 ## 🚀Quick Start
 
 ```bash
 # Install dependencies
 npm install
+```
 
+```bash
 # Serve on localhost
 npm start
 ```
 
 ## 😊Author
 
-**Alpha Olomi** [hello@alphaolomi.com](mailto:hello@alphaolomi.com)
+- **Alpha Olomi** [hello@alphaolomi.com](mailto:hello@alphaolomi.com)
 
 ## License
 MIT License
