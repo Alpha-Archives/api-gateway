@@ -6,17 +6,17 @@ admin:
 apiEndpoints:
   api:
     host: localhost
-    paths: '/api/v1'
+    paths: "/api/v1"
 serviceEndpoints:
   httpbin:
-    url: 'https://httpbin.org'
+    url: "https://httpbin.org"
+  jsonplaceholder:
+    url: "https://jsonplaceholder.typicode.com"
 policies:
   - basic-auth
   - cors
   - expression
-  - key-auth
   - log
-  - oauth2
   - proxy
   - rate-limit
 pipelines:
@@ -24,9 +24,11 @@ pipelines:
     apiEndpoints:
       - api
     policies:
-    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
-    # - key-auth:
-      - proxy:
+      - rate-limit:
           - action:
-              serviceEndpoint: httpbin 
+              max: 1
+              windowMs: 1000
+      - proxy:          
+          - action:
+              serviceEndpoint: jsonplaceholder
               changeOrigin: true

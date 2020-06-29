@@ -1,11 +1,28 @@
 {
-  "name": "idea-gateway",
-  "description": "Express Gateway Instance Bootstraped from Command Line",
-  "repository": {},
-  "license": "MIT",
+  "name": "api-gateway",
+  "private": true,
   "version": "1.0.0",
+  "description": "A minimal API Gateway Instance built with Express Gateway",
   "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
   "dependencies": {
-    "express-gateway": "^1.16.7"
-  }
+    "express-gateway": "^1.16.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alphaolomi/api-gateway.git"
+  },
+  "keywords": [
+    "api",
+    "gateway"
+  ],
+  "author": "Alpha Olomi <alphaolomi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alphaolomi/api-gateway/issues"
+  },
+  "homepage": "https://github.com/alphaolomi/api-gateway#readme"
 }
