@@ -1165,7 +1165,7 @@ expand-brackets@^2.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-express-gateway@^1.16.10:
+express-gateway@1.16.10:
   version "1.16.10"
   resolved "https://registry.yarnpkg.com/express-gateway/-/express-gateway-1.16.10.tgz#ad8422ccd75089d2e2783ec1ffdb8a9e07191a69"
   integrity sha512-ucGyfs8sKVcMt8/7XXS+QUfPE3IzMMK43UCpoRBw0gOZXcLf0m4xQwhTMXJ9GGejR/TqiCV2T2VT8BD2Y/yhqg==
