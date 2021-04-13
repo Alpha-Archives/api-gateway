@@ -1,14 +1,18 @@
-Credentials
-Overview Credentials API
+# Credentials
+
+## Overview Credentials API
+
 A Credential is a container for authentican\authorization secrets of API Consumer (User\App) There are three credential types provided by the Express Gateway authorization policies:
 
-basic-auth (password)
-key-auth (key pair id:secret )
-oauth2 (client secret or user password)   OAuth 2.0 policy
+- basic-auth (password)
+- key-auth (key pair id:secret )
+- oauth2 (client secret or user password)   OAuth 2.0 policy
+
 Any API Consumer (Users/Apps) can have only one credential of type basic-auth and oauth2. However, an API Consumer may have multiple key-auth credentials.
 
-Create Credential (basic-auth)
-Request: POST /credentials
+#### Create Credential (basic-auth)
+- Request: `POST /credentials`
+```json
 {
   "credential": { //optional
     "scopes": [
@@ -18,16 +22,21 @@ Request: POST /credentials
   "consumerId": "steve",
   "type": "basic-auth" // or key-auth or oauth2
 }
-Response
- {
+```
+- Response
+```json
+{
   "isActive": true,
   "createdAt": "Tue Jul 18 2017 21:57:16 GMT+0300 (EEST)",
   "updatedAt": "Tue Jul 18 2017 21:57:16 GMT+0300 (EEST)",
   "id": "steve",
   "password": "03cc5161-cf05-4b83-b7a2-f5c81354731f"
 }
-Create Credential (key-auth)
-Request: POST /credentials
+```
+
+#### Create Credential (key-auth)
+- Request: `POST /credentials`
+```json
 {
   "credential": { //optional
     "scopes": [
@@ -37,8 +46,10 @@ Request: POST /credentials
   "consumerId": "steve",
   "type": "key-auth"
 }
-Response
- {
+```
+- Response
+```json
+{
   "isActive": true,
   "createdAt": "Tue Jul 18 2017 22:39:35 GMT+0300 (EEST)",
   "updatedAt": "Tue Jul 18 2017 22:39:35 GMT+0300 (EEST)",
@@ -47,8 +58,10 @@ Response
   "scopes": null,
   "consumerId": "steve"
 }
-Create Credential (oauth2)
-Request: POST /credentials
+```
+#### Create Credential (oauth2)
+- Request: `POST /credentials`
+```json
 {
   "credential": { //optional
     "scopes": [
@@ -58,17 +71,24 @@ Request: POST /credentials
   "consumerId": "steve",
   "type": "oauth2"
 }
-Response
- {
+```
+- Response
+```json
+{
   "isActive": true,
   "createdAt": "Tue Jul 18 2017 21:57:16 GMT+0300 (EEST)",
   "updatedAt": "Tue Jul 18 2017 21:57:16 GMT+0300 (EEST)",
   "id": "steve",
   "secret": "03cc5161-cf05-4b83-b7a2-f5c81354731f"
 }
-Get Credential by Consumer Id (Username, UserId or AppId)
-Request: GET /credentials/{consumerId}
-Response:
+
+
+#### Get Credential by Consumer Id (Username, UserId or AppId)
+
+- Request: `GET /credentials/{consumerId}`
+- Response:
+
+```json
 {
   "credentials": [
     {
@@ -85,9 +105,13 @@ Response:
   ],
   "nextKey": 0
 }
-Get Credential info
-Request: GET /credentials/{type}/{credentialId}
-Response:
+```
+
+#### Get Credential info
+- Request: `GET /credentials/{type}/{credentialId}`
+- Response:
+
+```json
 {
     "keyId": "55tEGsilJkhKoWMS3kkipH", // only for key-auth
     "keySecret": "5BNegGCfqW4rhqqCz3A3sM", // only for key-auth
@@ -100,28 +124,38 @@ Response:
     "updatedAt": "Tue Jul 18 2017 17:04:06 GMT+0300 (EEST)"
 
 }
-Activate/Deactivate Credential
-Request: PUT /credentials/{type}/{credentialId}/status
+```
+
+#### Activate/Deactivate Credential
+
+- Request: `PUT /credentials/{type}/{credentialId}/status`
+```json
 {
   "status": true  // use false to deactivate
 }
+```
 Response:
+```json
 {
   "status": "Activated"  // Active, Deactivated, Inactive
 }
-Set scopes for Credential
-Request: PUT /credentials/{type}/{credentialId}/scopes
+```
+
+#### Set scopes for Credential
+- Request: `PUT /credentials/{type}/{credentialId}/scopes`
 {
   "scopes": [
     "admin"
   ]
 }
-Response: 204
-Add scope to Credential scopes
-Request: PUT /credentials/{type}/{credentialId}/scopes/{scope}
-Response: 204
-Remove scope from Credential scopes
-Request: DELETE /credentials/{type}/{credentialId}/scopes/{scope}
-Response: 204
-Note:
-credentialId for basic-auth and oauth2 is consumerId and for key-auth it is keyId
+- Response: 204
+
+#### Add scope to Credential scopes
+- Request: `PUT /credentials/{type}/{credentialId}/scopes/{scope}`
+- Response: 204
+
+#### Remove scope from Credential scopes
+- Request: `DELETE /credentials/{type}/{credentialId}/scopes/{scope}`
+- Response: 204
+
+Note: credentialId for basic-auth and oauth2 is consumerId and for key-auth it is keyId
