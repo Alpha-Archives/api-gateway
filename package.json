@@ -1,28 +1,28 @@
 {
   "name": "api-gateway",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
   "description": "A minimal API Gateway Instance built with Express Gateway",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express-gateway": "1.16.11"
+  "keywords": [
+    "api",
+    "gateway"
+  ],
+  "homepage": "https://github.com/alphaolomi/api-gateway#readme",
+  "bugs": {
+    "url": "https://github.com/alphaolomi/api-gateway/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alphaolomi/api-gateway.git"
   },
-  "keywords": [
-    "api",
-    "gateway"
-  ],
-  "author": "Alpha Olomi <alphaolomi@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/alphaolomi/api-gateway/issues"
+  "author": "Alpha Olomi <alphaolomi@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/alphaolomi/api-gateway#readme"
+  "dependencies": {
+    "express-gateway": "1.16.11"
+  }
 }
