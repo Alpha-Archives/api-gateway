@@ -1,32 +1,30 @@
 # Building a simple Microservices App with Express Gateway
 
-
-
-
-
 One of the interesting programming problems I have encountered on my programming journey is building a microservice architecture application. What made it interesting was my discovery of how it promotes collaboration among team members working on a product amongst other numerous benefits that it has. It made working in a team easier and flawless bringing about an increase in delivery speed. A large team with a large codebase would likely have conflicts along the way. This can be mitigated by breaking down the codebase into smaller services and separated by a clear interface, this is what the microservice architecture is about. It makes it easier to scale a product.
-
 
 This article is intended to be a quick-start guide for developing a simple microservice application with Node.js and Express Gateway.
 
 ## Getting Started
+
 ===============
 
 ## Prerequisites
--------------
+
+---
 
 This tutorial requires the following;
 
--   Basic understanding of javascript
--   Ability to run commands on the terminal
--   Node v10 and above
+- Basic understanding of javascript
+- Ability to run commands on the terminal
+- Node v10 and above
 
 For multiple versions of node, follow this link to setup node js using nvm <https://github.com/nvm-sh/nvm>
 
 NPM comes with Node which is what will be used to install all the needed dependencies.
 
 ## Setting up Express Gateway
---------------------------
+
+---
 
 Open your terminal and navigate to the location in which you will like to create your app.
 
@@ -51,6 +49,7 @@ $ cd microservices
 Before we get started, let's install other dependencies and setup, Babel, as we will be writing our code in ES6.
 
 ## Installing Dependencies And Setting Up Babel
+
 ============================================
 
 Install express.js, a framework of Javascript
@@ -73,13 +72,11 @@ $ npm start
 
 The API gateway starts on the port defined in `config/gateway.config.yml` which by default is 8080. It has a hot reload config that monitors any changes and restarts the server automatically. Now that we have set up the Express Gateway and we have it running, it's time to create our endpoints.
 
-Create Endpoints
-================
+# Create Endpoints
 
 We are going to be creating two simple endpoints, a GET user endpoint and GET music endpoint. The main point of focus in this tutorial is how to integrate an Express Gateway to a microservice app.
 
-Create the User Endpoint
-------------------------
+## Create the User Endpoint
 
 Create a file for users in the root folder
 
@@ -89,7 +86,7 @@ To set up the user server, add the following lines of code to the user.js file
 
 To enable the ES6 code to run, add a start script in the package.json file.
 
-Credits 
+Credits
 
 [Bolaji](https://medium.com/u/5d97add8fae6?source=post_page-----a8fd49d81aeb--------------------------------)
 
@@ -107,8 +104,7 @@ The response should look like this
 
 ["Tony","Lisa","Michael","Ginger","Food"]
 
-Create the Music Endpoint
--------------------------
+## Create the Music Endpoint
 
 Create a file for music in the root folder
 
@@ -129,26 +125,24 @@ The response should look like this
 ["Jesus","I love to praise your name","My Story","Days of Elijah"]
 
 ## Exposing the APIs
+
 =================
 
-The Express Gateway accepts requests from the clients and directs them to the microservice in charge of the particular request. For example, if a request is made through the gateway, [*http://localhost:8080/users*](http://localhost:3000/users)*, *the request is directed to the user microservice and a request such as [*http://localhost:8080/musics*](http://localhost:3000/users) is directed to the music microservice. In summary, each request is accepted through a server and directed to their various host. Let's set up our app to implement this.
+The Express Gateway accepts requests from the clients and directs them to the microservice in charge of the particular request. For example, if a request is made through the gateway, [_http://localhost:8080/users_](http://localhost:3000/users)*, *the request is directed to the user microservice and a request such as [_http://localhost:8080/musics_](http://localhost:3000/users) is directed to the music microservice. In summary, each request is accepted through a server and directed to their various host. Let's set up our app to implement this.
 
-Expose the endpoints to the gateway
------------------------------------
+## Expose the endpoints to the gateway
 
 Navigate into config folder and open gateway.config.yml file. In the *apiEndpoint*s section, we create an API endpoint named *"user"*, define the host and path. The path defined is an array of paths we would like to match. This is to cover for all URLs that match the path pattern. Repeat the same for the music endpoint. For more details about matching patterns for hostname and paths, check out the Express Gateway endpoint [documentation](https://www.express-gateway.io/docs/configuration/gateway.config.yml/apiEndpoints/)
 
-With these, the Express gateway can accept external APIs(request from the client) of these formats '[*http://localhost:8080*](http://localhost:3000/users)*/users'* or *'*[*http://localhost:8080*](http://localhost:3000/users)*/users/*'*
-
+With these, the Express gateway can accept external APIs(request from the client) of these formats '[_http://localhost:8080_](http://localhost:3000/users)*/users'* or *'*[_http://localhost:8080_](http://localhost:3000/users)_/users/_'\*
 
 ## Declare the Service Endpoints to the gateway
---------------------------------------------
 
-The service endpoints are the endpoints of our microservices, in this case, the user and the music microservices. The external request from the API endpoints is directed to the service endpoints. In the serviceEndpoints section still in the same gateway.config.yml file, we create services and define their URLs. For users, we call its service endpoints *"userService"* and add its endpoints *'*[*http://localhost:3000*](http://localhost:3000/users)*'*. Repeat the same for the music service endpoint.
+---
 
+The service endpoints are the endpoints of our microservices, in this case, the user and the music microservices. The external request from the API endpoints is directed to the service endpoints. In the serviceEndpoints section still in the same gateway.config.yml file, we create services and define their URLs. For users, we call its service endpoints *"userService"* and add its endpoints *'*[_http://localhost:3000_](http://localhost:3000/users)_'_. Repeat the same for the music service endpoint.
 
-Tying the Knot
---------------
+## Tying the Knot
 
 Now let's wire the API endpoints and the service endpoints. This is done in the Pipelines section. It is where we connect the API endpoints and the service endpoints.
 
@@ -161,6 +155,7 @@ npm start server
 Now we can test our URLs. curl [http://localhost:8080/musics](http://localhost:3000/users) and curl [http://localhost:8080/musics](http://localhost:3000/users). Note that in the URLs, both the user and the music have the same localhost. Don't you just love the Express Gateway?
 
 ## Stress Reduction
+
 ================
 
 To have all the servers up and running on *"npm start"* without having to start them individually, we import them in the server.js file.
@@ -185,4 +180,4 @@ Edit the start script in the package.json
 
 Assuming there are no errors in the application, *"npm start" *should start the microservice application.
 
-This is the end of a simple microservice application tutorial. If there are any errors while building yours, or you have suggestions, feel free to comment below. For more details about Express Gateway, its [documentation](https://www.express-gateway.io/getting-started/) is a great place to start. 
+This is the end of a simple microservice application tutorial. If there are any errors while building yours, or you have suggestions, feel free to comment below. For more details about Express Gateway, its [documentation](https://www.express-gateway.io/getting-started/) is a great place to start.
